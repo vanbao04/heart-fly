@@ -1,26 +1,32 @@
 function createHeart() {
     const heart = document.createElement("div");
-    heart.classList.add("heart");
+    heart.className = "heart";
     heart.innerHTML = "❤️";
 
-    // Vị trí ngang ngẫu nhiên
+    // MÀU NGẪU NHIÊN
+    const colors = [
+        "#ff1744", "#ff4081", "#f50057",
+        "#ff80ab", "#ff5252", "#ff6d00"
+    ];
+    heart.style.color = colors[Math.floor(Math.random() * colors.length)];
+
+    // KÍCH THƯỚC NGẪU NHIÊN (TO HƠN)
+    const size = Math.random() * 35 + 25;
+    heart.style.fontSize = size + "px";
+
+    // VỊ TRÍ NGANG
     heart.style.left = Math.random() * window.innerWidth + "px";
 
-    // Thời gian bay
-    const duration = Math.random() * 3 + 2;
+    // THỜI GIAN BAY (MƯỢT)
+    const duration = Math.random() * 2 + 4;
     heart.style.animationDuration = duration + "s";
-
-    // Lệch trái/phải
-    const x = (Math.random() - 0.5) * 200;
-    heart.style.setProperty("--x", x + "px");
 
     document.body.appendChild(heart);
 
-    // Xóa trái tim sau khi xong animation
     setTimeout(() => {
         heart.remove();
     }, duration * 1000);
 }
 
-// Tạo trái tim liên tục
-setInterval(createHeart, 300);
+// TẠO TRÁI TIM LIÊN TỤC
+setInterval(createHeart, 250);
