@@ -13,23 +13,23 @@ body {
 /* Trái tim */
 .heart {
     position: fixed;
-    bottom: -20px;
-    font-size: 24px;
-    color: red;
-    animation: fly linear forwards;
-    user-select: none;
+    bottom: -30px;
+    opacity: 0;
+    animation: fly ease-in-out forwards;
+    will-change: transform, opacity;
     pointer-events: none;
 }
 
 @keyframes fly {
-    from {
-        transform: translateY(0) translateX(0) scale(1);
+    0% {
+        transform: translateY(0) scale(0.8);
         opacity: 1;
     }
-    to {
-        transform: translateY(-100vh)
-                   translateX(var(--x))
-                   scale(1.5);
+    50% {
+        opacity: 0.9;
+    }
+    100% {
+        transform: translateY(-120vh) scale(1.4);
         opacity: 0;
     }
 }
