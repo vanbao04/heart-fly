@@ -1,0 +1,35 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow: hidden;
+    height: 100vh;
+    background: linear-gradient(to top, #ffdde1, #ee9ca7);
+}
+
+/* Trái tim */
+.heart {
+    position: fixed;
+    bottom: -20px;
+    font-size: 24px;
+    color: red;
+    animation: fly linear forwards;
+    user-select: none;
+    pointer-events: none;
+}
+
+@keyframes fly {
+    from {
+        transform: translateY(0) translateX(0) scale(1);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-100vh)
+                   translateX(var(--x))
+                   scale(1.5);
+        opacity: 0;
+    }
+}
