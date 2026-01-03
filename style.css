@@ -1,11 +1,10 @@
-/* RESET */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* BODY */
 body {
     width: 100vw;
     height: 100vh;
@@ -14,13 +13,46 @@ body {
 
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 
     overflow: hidden;
 }
 
-/* CÂU HỎI */
+.hidden {
+    display: none;
+}
+
+#input-box {
+    text-align: center;
+}
+
+#input-box h1 {
+    color: #ff2e63;
+    margin-bottom: 20px;
+}
+
+#nameInput {
+    padding: 12px;
+    font-size: 18px;
+    width: 240px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    text-align: center;
+}
+
+#startBtn {
+    margin-top: 20px;
+    padding: 12px 36px;
+    font-size: 18px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    background: #ff4d6d;
+    color: white;
+}
+
 #question {
     font-size: 36px;
     color: #ff2e63;
@@ -28,17 +60,14 @@ body {
     text-align: center;
 }
 
-/* HỘP 2 LỰA CHỌN */
 #answer-box {
     display: flex;
-    gap: 80px; /* TÁCH RÕ 2 Ô */
+    gap: 80px;
 }
 
-/* STYLE CHUNG CHO NÚT */
 #answer-box button {
     width: 160px;
     height: 90px;
-
     font-size: 22px;
     font-weight: bold;
 
@@ -49,23 +78,33 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-
-    transition: transform 0.3s;
 }
 
-/* NÚT CÓ */
 #yesBtn {
-    background-color: #ff4d6d;
+    background: #ff4d6d;
     color: white;
 }
 
-#yesBtn:hover {
-    transform: scale(1.1);
+#noBtn {
+    background: #e0e0e0;
+    color: black;
+    position: relative;
 }
 
-/* NÚT KHÔNG (BAN ĐẦU NẰM TRONG FLEX) */
-#noBtn {
-    background-color: #e0e0e0;
-    color: black;
-    position: relative; /* CỰC KỲ QUAN TRỌNG */
+.heart {
+    position: fixed;
+    bottom: -20px;
+    font-size: 24px;
+    animation: fly 3s linear forwards;
+}
+
+@keyframes fly {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-600px) scale(2);
+        opacity: 0;
+    }
 }
