@@ -1,30 +1,53 @@
+// ===== LẤY ELEMENT =====
 const inputBox = document.getElementById("input-box");
 const nameInput = document.getElementById("nameInput");
 const startBtn = document.getElementById("startBtn");
 
 const question = document.getElementById("question");
 const answerBox = document.getElementById("answer-box");
-
 const yesBtn = document.getElementById("yesBtn");
 const noBtn = document.getElementById("noBtn");
 
-let userName = "";
+// ===== DANH SÁCH CHỮ NÚT KHÔNG =====
+const noMessages = [
+    "Không 💔",
+    "Không nha 😝",
+    "Em từ chối 🙈",
+    "Đừng mơ 😏",
+    "Không đời nào 😜",
+    "Chưa chắc 😅",
+    "Khônggg 😆",
+    "Thôi đi 😌",
+    "Mơ tiếp đi 😎"
+];
 
-const heartColors = ["#ff4d6d", "#ffb703", "#fb8500", "#ff006e", "#8338ec"];
+let lastNoIndex = -1;
 
-/* Sau khi nhập */
+// ===== ẨN BAN ĐẦU =====
+question.classList.add("hidden");
+answerBox.classList.add("hidden");
+
+// ===== BẮT ĐẦU =====
 startBtn.addEventListener("click", () => {
     if (nameInput.value.trim() === "") return;
 
-    userName = nameInput.value.trim();
+    const userName = nameInput.value.trim();
+
+    // Ẩn ô nhập
     inputBox.classList.add("hidden");
 
-    question.textContent = `${userName} có yêu anh không? 💕`;
+    // Hiện câu hỏi
+    question.textContent = `${userName} có yêu anh không? 💖`;
     question.classList.remove("hidden");
+
+    // Hiện 2 nút
     answerBox.classList.remove("hidden");
+
+    // Bắt đầu trái tim bay
+    setInterval(createHeart, 300);
 });
 
-/* Nút Không chạy */
+// ===== NÚT KHÔNG CHẠY TRỐN + ĐỔI CHỮ =====
 noBtn.addEventListener("mouseenter", () => {
     noBtn.style.position = "fixed";
 
@@ -33,52 +56,68 @@ noBtn.addEventListener("mouseenter", () => {
 
     noBtn.style.left = x + "px";
     noBtn.style.top = y + "px";
+
+    // Đổi chữ không trùng
+    let index;
+    do {
+        index = Math.floor(Math.random() * noMessages.length);
+    } while (index === lastNoIndex);
+
+    lastNoIndex = index;
+    noBtn.textContent = noMessages[index];
 });
 
-/* Bấm Có */
+// ===== NÚT CÓ =====
 yesBtn.addEventListener("click", () => {
     answerBox.classList.add("hidden");
-    question.textContent = `Anh yêu ${userName} 💖`;
-
-    for (let i = 0; i < 40; i++) {
-        createHeart();
-    }
-
-    for (let i = 0; i < 12; i++) {
-        explodeName();
-    }
+    explodeHearts(nameInput.value.trim());
 });
 
-/* Trái tim bay */
+// ===== TẠO TRÁI TIM BAY =====
 function createHeart() {
     const heart = document.createElement("div");
-    heart.className = "heart";
     heart.innerHTML = "❤️";
+    heart.classList.add("heart");
 
-    const size = Math.random() * 20 + 20;
-    const color = heartColors[Math.floor(Math.random() * heartColors.length)];
-
-    heart.style.left = Math.random() * window.innerWidth + "px";
+    const size = Math.random() * 20 + 15;
     heart.style.fontSize = size + "px";
-    heart.style.color = color;
+
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = Math.random() * 2 + 3 + "s";
+
+    heart.style.color = `hsl(${Math.random() * 360}, 100%, 60%)`;
 
     document.body.appendChild(heart);
 
-    setTimeout(() => heart.remove(), 3000);
+    setTimeout(() => {
+        heart.remove();
+    }, 5000);
 }
 
-/* Nổ tên */
-function explodeName() {
-    const name = document.createElement("div");
-    name.className = "name-pop";
-    name.textContent = userName;
+// ===== TRÁI TIM NỔ THÀNH TÊN =====
+function explodeHearts(name) {
+    question.textContent = `Anh yêu ${name} 💘`;
 
-    name.style.left = Math.random() * window.innerWidth + "px";
-    name.style.top = Math.random() * window.innerHeight + "px";
-    name.style.color = heartColors[Math.floor(Math.random() * heartColors.length)];
-    name.style.fontSize = Math.random() * 20 + 24 + "px";
+    for (let i = 0; i < 40; i++) {
+        const heart = document.createElement("div");
+        heart.innerHTML = "❤️";
+        heart.classList.add("explode-heart");
 
-    document.body.appendChild(name);
+        heart.style.left = "50%";
+        heart.style.top = "50%";
+        heart.style.fontSize = Math.random() * 20 + 15 + "px";
+        heart.style.color = `hsl(${Math.random() * 360}, 100%, 60%)`;
 
-    setTimeout(() => name.remove(), 2000);
+        const angle = Math.random() * 2 * Math.PI;
+        const distance = Math.random() * 200 + 50;
+
+        heart.style.setProperty("--x", Math.cos(angle) * distance + "px");
+        heart.style.setProperty("--y", Math.sin(angle) * distance + "px");
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 2000);
+    }
 }
