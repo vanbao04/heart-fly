@@ -77,20 +77,35 @@ yesBtn.addEventListener("click", () => {
 // ===== TRÁI TIM BAY =====
 function createHeart() {
     const heart = document.createElement("div");
-    heart.textContent = "❤️";
-    heart.className = "heart";
+    heart.classList.add("heart");
 
+    // inner text heart
+    heart.innerHTML = "❤️";
+
+    // random màu
+    const colors = ["#ff0000","#ff3366","#ff66cc","#ff99cc","#ff6699","#ff33cc"];
+    heart.style.color = colors[Math.floor(Math.random() * colors.length)];
+
+    // random kích thước
     const size = Math.random() * 30 + 20;
     heart.style.fontSize = size + "px";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.animationDuration = Math.random() * 2 + 3 + "s";
-    heart.style.color = `hsl(${Math.random() * 360}, 100%, 60%)`;
-    heart.style.transform = `rotate(${Math.random() * 360}deg)`;
+
+    // random vị trí ngang
+    heart.style.left = Math.random() * window.innerWidth + "px";
+
+    // random duration mượt
+    const duration = Math.random() * 2 + 4;
+    heart.style.animationDuration = duration + "s";
 
     document.body.appendChild(heart);
 
-    setTimeout(() => heart.remove(), 5000);
+    setTimeout(() => {
+        heart.remove();
+    }, duration * 1000);
 }
+
+// tạo nhiều trái tim liên tục
+setInterval(createHeart, 300);
 
 // ===== NỔ TRÁI TIM =====
 function explodeHearts(name) {
@@ -116,4 +131,5 @@ function explodeHearts(name) {
         setTimeout(() => heart.remove(), 2000);
     }
 }
+
 
