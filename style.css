@@ -33,3 +33,35 @@ body {
         opacity: 0;
     }
 }
+#love-text {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 40px;
+    font-weight: bold;
+    color: #ff3366;
+    opacity: 0;
+    pointer-events: none;
+    animation: none;
+}
+
+.show-love {
+    animation: showText 2s ease forwards;
+}
+
+@keyframes showText {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.5);
+    }
+    50% {
+        opacity: 1;
+        transform: translate(-50%, -60%) scale(1.1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -80%) scale(1);
+    }
+}
+
