@@ -88,3 +88,35 @@ body {
     box-shadow: 0 4px 12px rgba(0,0,0,0.25);
 }
 
+#answer-box {
+    position: fixed;
+    top: 60%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: none;
+    gap: 20px;
+    z-index: 99999;
+}
+
+#answer-box button {
+    padding: 12px 22px;
+    font-size: 18px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+#yesBtn {
+    background: #ff4d6d;
+    color: white;
+}
+
+#noBtn {
+    background: #ccc;
+}
+
+/* Ẩn input khi xong */
+.hidden {
+    display: none;
+}
+
