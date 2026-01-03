@@ -26,47 +26,62 @@ function createHeart() {
 
 setInterval(createHeart, 250);
 
-const loveText = document.getElementById("love-text");
 const nameInput = document.getElementById("nameInput");
+const inputBox = document.getElementById("input-box");
+const loveText = document.getElementById("love-text");
+const answerBox = document.getElementById("answer-box");
+const yesBtn = document.getElementById("yesBtn");
+const noBtn = document.getElementById("noBtn");
 
-const loveMessages = [
-    "Anh yêu {name} ❤️",
-    "Anh thích {name} nhiều lắm 🥰",
-    "{name} là cả thế giới của anh 🌎",
-    "Ở bên anh nhé {name} 💕",
-    "Anh muốn nắm tay {name} thật lâu 🤝❤️",
-    "{name} là điều ngọt ngào nhất anh có 💘",
-    "Chỉ cần {name} là anh đủ hạnh phúc 💖",
-    "Anh không cần gì ngoài {name} 💗"
-];
+let name = "";
+let asked = false;
 
-const defaultMessages = [
-    "Anh yêu em ❤️",
-    "Anh thích em nhiều lắm 🥰",
-    "Em là cả thế giới của anh 🌎",
-    "Ở bên anh nhé 💕"
-];
-
-document.addEventListener("click", () => {
-    const name = nameInput.value.trim();
-
-    let message = "";
-
-    if (name !== "") {
-        const template = loveMessages[
-            Math.floor(Math.random() * loveMessages.length)
-        ];
-        message = template.replace("{name}", name);
-    } else {
-        message = defaultMessages[
-            Math.floor(Math.random() * defaultMessages.length)
-        ];
+// khi nhấn Enter trong ô nhập
+nameInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+        startQuestion();
     }
+});
 
+// click lần đầu cũng bắt đầu
+document.addEventListener("click", () => {
+    if (!asked && nameInput.value.trim() !== "") {
+        startQuestion();
+    }
+});
+
+function startQuestion() {
+    name = nameInput.value.trim();
+    asked = true;
+
+    // Ẩn ô nhập
+    inputBox.classList.add("hidden");
+
+    // Hiện câu hỏi
+    showText(`${name} có yêu anh không? 💕`);
+
+    // Hiện nút trả lời
+    answerBox.style.display = "flex";
+}
+
+// Click CÓ
+yesBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    answerBox.style.display = "none";
+    showText(`Anh biết mà 😍 Anh yêu ${name} nhiều lắm ❤️`);
+});
+
+// Click KHÔNG
+noBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    answerBox.style.display = "none";
+    showText(`Không sao đâu 😊 Anh vẫn thích ${name} 💖`);
+});
+
+function showText(message) {
     loveText.textContent = message;
-
-    // reset animation
     loveText.classList.remove("show-love");
     void loveText.offsetWidth;
     loveText.classList.add("show-love");
-});
+}
+
