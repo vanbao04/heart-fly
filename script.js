@@ -33,8 +33,13 @@ const form = document.getElementById("nameForm");
 form.addEventListener("submit", (e) => {
     e.preventDefault();
 
-const userName = nameInput.value.trim();
-if (!userName) return;
+const form = document.getElementById("nameForm");
+
+form.addEventListener("submit", (e) => {
+    e.preventDefault(); // không reload trang
+
+    const userName = nameInput.value.trim();
+    if (!userName) return;
 
     // Ẩn ô nhập
     inputBox.classList.add("hidden");
@@ -43,22 +48,13 @@ if (!userName) return;
     question.textContent = `${userName} có yêu anh không? 💖`;
     question.classList.remove("hidden");
 
-    // 👉 LÚC NÀY MỚI HIỆN 2 NÚT
+    // 👉 LÚC NÀY MỚI HIỆN CÓ / KHÔNG
     answerBox.classList.remove("hidden");
 
     // Trái tim bay nhiều hơn
     setInterval(() => {
         for (let i = 0; i < 3; i++) createHeart();
     }, 200);
-});
-
-// Trái tim bay nhiều
-    setInterval(() => {
-        for (let i = 0; i < 3; i++) {
-            createHeart();
-        }
-    }, 200);
-
 });
 
 // ===== NÚT KHÔNG =====
@@ -143,6 +139,7 @@ function explodeHearts(name) {
         setTimeout(() => heart.remove(), 2000);
     }
 }
+
 
 
 
