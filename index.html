@@ -2,25 +2,40 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>Trái tim bay ❤️</title>
+    <title>Heart Fly 💖</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div id="input-box">
-        <input type="text" id="nameInput" placeholder="Nhập tên em vào đây 💕">
-    </div>
-
-    <div id="love-text"></div>
+    <h1 id="question">Em có yêu anh không? 💕</h1>
 
     <div id="answer-box">
-    <button id="yesBtn">Có ❤️</button>
-    <button id="noBtn">Không 💔</button>
-</div>
+        <button id="yesBtn">Có ❤️</button>
+        <button id="noBtn">Không 💔</button>
+    </div>
 
-    <script src="script.js"></script>
+    <script>
+        const noBtn = document.getElementById("noBtn");
+        const yesBtn = document.getElementById("yesBtn");
+
+        //*No
+        noBtn.addEventListener("mouseover", () => {
+            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+            noBtn.style.left = x + "px";
+            noBtn.style.top = y + "px";
+        });
+
+        //*Yes
+        yesBtn.addEventListener("click", () => {
+            document.body.innerHTML = `
+                <div class="love">
+                    <h1>Anh biết mà 😍</h1>
+                    <p>Anh yêu em rất nhiều 💖</p>
+                </div>
+            `;
+        });
+    </script>
+
 </body>
-
 </html>
-
-
