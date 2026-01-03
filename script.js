@@ -3,21 +3,17 @@ function createHeart() {
     heart.className = "heart";
     heart.innerHTML = "❤️";
 
-    // MÀU NGẪU NHIÊN
     const colors = [
         "#ff1744", "#ff4081", "#f50057",
         "#ff80ab", "#ff5252", "#ff6d00"
     ];
     heart.style.color = colors[Math.floor(Math.random() * colors.length)];
 
-    // KÍCH THƯỚC NGẪU NHIÊN (TO HƠN)
     const size = Math.random() * 35 + 25;
     heart.style.fontSize = size + "px";
 
-    // VỊ TRÍ NGANG
     heart.style.left = Math.random() * window.innerWidth + "px";
 
-    // THỜI GIAN BAY (MƯỢT)
     const duration = Math.random() * 2 + 4;
     heart.style.animationDuration = duration + "s";
 
@@ -28,27 +24,44 @@ function createHeart() {
     }, duration * 1000);
 }
 
-// TẠO TRÁI TIM LIÊN TỤC
 setInterval(createHeart, 250);
-const loveText = document.getElementById("love-text");
 
-// DANH SÁCH CÂU TỎ TÌNH
+const loveText = document.getElementById("love-text");
+const nameInput = document.getElementById("nameInput");
+
 const loveMessages = [
+    "Anh yêu {name} ❤️",
+    "Anh thích {name} nhiều lắm 🥰",
+    "{name} là cả thế giới của anh 🌎",
+    "Ở bên anh nhé {name} 💕",
+    "Anh muốn nắm tay {name} thật lâu 🤝❤️",
+    "{name} là điều ngọt ngào nhất anh có 💘",
+    "Chỉ cần {name} là anh đủ hạnh phúc 💖",
+    "Anh không cần gì ngoài {name} 💗"
+];
+
+const defaultMessages = [
     "Anh yêu em ❤️",
-    "Làm người yêu anh nhé 💕",
-    "Em là cả thế giới của anh 🌎",
     "Anh thích em nhiều lắm 🥰",
-    "Ở bên anh nhé 💖",
-    "Gặp em là điều may mắn nhất 💘",
-    "Anh không cần gì ngoài em 💗",
-    "Em có đồng ý yêu anh không? 💓"
+    "Em là cả thế giới của anh 🌎",
+    "Ở bên anh nhé 💕"
 ];
 
 document.addEventListener("click", () => {
-    // chọn câu random
-    const message = loveMessages[
-        Math.floor(Math.random() * loveMessages.length)
-    ];
+    const name = nameInput.value.trim();
+
+    let message = "";
+
+    if (name !== "") {
+        const template = loveMessages[
+            Math.floor(Math.random() * loveMessages.length)
+        ];
+        message = template.replace("{name}", name);
+    } else {
+        message = defaultMessages[
+            Math.floor(Math.random() * defaultMessages.length)
+        ];
+    }
 
     loveText.textContent = message;
 
@@ -57,5 +70,3 @@ document.addEventListener("click", () => {
     void loveText.offsetWidth;
     loveText.classList.add("show-love");
 });
-
-
