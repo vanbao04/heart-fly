@@ -173,56 +173,51 @@ body {
     line-height: 1;
 }
 
-/* ——————————————
-   STYLES CHO 2 NÚT TRẢ LỜI
-   —————————————— */
-
+/* =========================
+   HỘP 2 LỰA CHỌN
+========================= */
 #answer-box {
     position: fixed;
-    top: 62%;
+    top: 60%;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
-    gap: 40px; /* khoảng cách giữa 2 ô */
-    z-index: 99999;
+    gap: 50px; /* tách 2 ô rõ ràng */
+    z-index: 9999;
 }
 
+/* =========================
+   STYLE CHUNG CHO NÚT
+========================= */
 #answer-box button {
-    width: 120px;
+    width: 140px;
     height: 80px;
-    display: flex;
-    flex-direction: column; /* tách chữ & icon theo cột */
-    align-items: center;
-    justify-content: center;
-
-    font-size: 18px;
-    text-align: center;
-    line-height: 1.3;
+    font-size: 20px;
+    font-weight: bold;
 
     border: none;
-    border-radius: 24px;
+    border-radius: 30px;
     cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* Nút CÓ */
+/* =========================
+   NÚT CÓ (ĐỨNG YÊN)
+========================= */
 #yesBtn {
     background: #ff4d6d;
     color: white;
+    position: relative; /* ❗ KHÔNG fixed */
 }
 
-/* Nút KHÔNG */
+/* =========================
+   NÚT KHÔNG (CHẠY TRỐN)
+========================= */
 #noBtn {
-    background: #d3d3d3;
+    background: #dcdcdc;
     color: black;
-    position: fixed; /* để chạy trốn */
+    position: fixed; /* ❗ CHỈ NÚT NÀY fixed */
 }
-
-.text-btn {
-    font-weight: bold;
-}
-
-.icon-btn {
-    font-size: 22px;
-    margin-top: 4px;
-}
-
