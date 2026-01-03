@@ -173,3 +173,56 @@ body {
     line-height: 1;
 }
 
+/* ——————————————
+   STYLES CHO 2 NÚT TRẢ LỜI
+   —————————————— */
+
+#answer-box {
+    position: fixed;
+    top: 62%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 40px; /* khoảng cách giữa 2 ô */
+    z-index: 99999;
+}
+
+#answer-box button {
+    width: 120px;
+    height: 80px;
+    display: flex;
+    flex-direction: column; /* tách chữ & icon theo cột */
+    align-items: center;
+    justify-content: center;
+
+    font-size: 18px;
+    text-align: center;
+    line-height: 1.3;
+
+    border: none;
+    border-radius: 24px;
+    cursor: pointer;
+}
+
+/* Nút CÓ */
+#yesBtn {
+    background: #ff4d6d;
+    color: white;
+}
+
+/* Nút KHÔNG */
+#noBtn {
+    background: #d3d3d3;
+    color: black;
+    position: fixed; /* để chạy trốn */
+}
+
+.text-btn {
+    font-weight: bold;
+}
+
+.icon-btn {
+    font-size: 22px;
+    margin-top: 4px;
+}
+
