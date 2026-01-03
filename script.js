@@ -32,12 +32,30 @@ function createHeart() {
 setInterval(createHeart, 250);
 const loveText = document.getElementById("love-text");
 
+// DANH SÁCH CÂU TỎ TÌNH
+const loveMessages = [
+    "Anh yêu em ❤️",
+    "Làm người yêu anh nhé 💕",
+    "Em là cả thế giới của anh 🌎",
+    "Anh thích em nhiều lắm 🥰",
+    "Ở bên anh nhé 💖",
+    "Gặp em là điều may mắn nhất 💘",
+    "Anh không cần gì ngoài em 💗",
+    "Em có đồng ý yêu anh không? 💓"
+];
+
 document.addEventListener("click", () => {
+    // chọn câu random
+    const message = loveMessages[
+        Math.floor(Math.random() * loveMessages.length)
+    ];
+
+    loveText.textContent = message;
+
+    // reset animation
     loveText.classList.remove("show-love");
-
-    // trigger lại animation
     void loveText.offsetWidth;
-
     loveText.classList.add("show-love");
 });
+
 
