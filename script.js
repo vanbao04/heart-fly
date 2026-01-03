@@ -89,5 +89,32 @@ function showText(message) {
     loveText.classList.add("show-love");
 }
 
+function explodeHearts() {
+    for (let i = 0; i < 40; i++) {
+        const heart = document.createElement("div");
+        heart.innerHTML = "❤️";
+        heart.style.position = "fixed";
+        heart.style.left = "50%";
+        heart.style.top = "50%";
+        heart.style.fontSize = Math.random() * 30 + 20 + "px";
+        heart.style.zIndex = 9999;
 
+        document.body.appendChild(heart);
 
+        const angle = Math.random() * 2 * Math.PI;
+        const distance = Math.random() * 300 + 100;
+
+        const x = Math.cos(angle) * distance;
+        const y = Math.sin(angle) * distance;
+
+        heart.animate([
+            { transform: "translate(0,0)", opacity: 1 },
+            { transform: `translate(${x}px, ${y}px)`, opacity: 0 }
+        ], {
+            duration: 1200,
+            easing: "ease-out"
+        });
+
+        setTimeout(() => heart.remove(), 1200);
+    }
+}
