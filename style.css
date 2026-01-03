@@ -115,8 +115,12 @@ body {
     background: #ccc;
 }
 
-/* Ẩn input khi xong */
 .hidden {
     display: none;
+}
+
+#noBtn {
+    position: relative;
+    transition: 0.15s;
 }
 
