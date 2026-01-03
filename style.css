@@ -24,17 +24,17 @@ body {
 #question {
     font-size: 36px;
     color: #ff2e63;
-    margin-bottom: 40px;
+    margin-bottom: 50px;
     text-align: center;
 }
 
 /* HỘP 2 LỰA CHỌN */
 #answer-box {
     display: flex;
-    gap: 80px; /* TÁCH RÕ */
+    gap: 80px; /* TÁCH RÕ 2 Ô */
 }
 
-/* NÚT CHUNG */
+/* STYLE CHUNG CHO NÚT */
 #answer-box button {
     width: 160px;
     height: 90px;
@@ -50,12 +50,12 @@ body {
     align-items: center;
     justify-content: center;
 
-    transition: 0.3s;
+    transition: transform 0.3s;
 }
 
 /* NÚT CÓ */
 #yesBtn {
-    background: #ff4d6d;
+    background-color: #ff4d6d;
     color: white;
 }
 
@@ -63,9 +63,9 @@ body {
     transform: scale(1.1);
 }
 
-/* NÚT KHÔNG – BAN ĐẦU KHÔNG FIXED */
+/* NÚT KHÔNG (BAN ĐẦU NẰM TRONG FLEX) */
 #noBtn {
-    background: #e0e0e0;
+    background-color: #e0e0e0;
     color: black;
-    position: relative; /* QUAN TRỌNG */
+    position: relative; /* CỰC KỲ QUAN TRỌNG */
 }
