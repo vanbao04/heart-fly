@@ -36,14 +36,12 @@ const noBtn = document.getElementById("noBtn");
 let name = "";
 let asked = false;
 
-// khi nhấn Enter trong ô nhập
 nameInput.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
         startQuestion();
     }
 });
 
-// click lần đầu cũng bắt đầu
 document.addEventListener("click", () => {
     if (!asked && nameInput.value.trim() !== "") {
         startQuestion();
@@ -54,28 +52,32 @@ function startQuestion() {
     name = nameInput.value.trim();
     asked = true;
 
-    // Ẩn ô nhập
     inputBox.classList.add("hidden");
 
-    // Hiện câu hỏi
     showText(`${name} có yêu anh không? 💕`);
 
-    // Hiện nút trả lời
     answerBox.style.display = "flex";
 }
 
-// Click CÓ
 yesBtn.addEventListener("click", (e) => {
     e.stopPropagation();
     answerBox.style.display = "none";
     showText(`Anh biết mà 😍 Anh yêu ${name} nhiều lắm ❤️`);
 });
 
-// Click KHÔNG
 noBtn.addEventListener("click", (e) => {
     e.stopPropagation();
     answerBox.style.display = "none";
     showText(`Không sao đâu 😊 Anh vẫn thích ${name} 💖`);
+noBtn.addEventListener("mouseover", () => {
+    const x = Math.random() * (window.innerWidth - 100);
+    const y = Math.random() * (window.innerHeight - 100);
+
+    noBtn.style.position = "fixed";
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+});
+
 });
 
 function showText(message) {
@@ -84,4 +86,5 @@ function showText(message) {
     void loveText.offsetWidth;
     loveText.classList.add("show-love");
 }
+
 
