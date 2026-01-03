@@ -62,7 +62,11 @@ function startQuestion() {
 yesBtn.addEventListener("click", (e) => {
     e.stopPropagation();
     answerBox.style.display = "none";
+
     showText(`Anh biết mà 😍 Anh yêu ${name} nhiều lắm ❤️`);
+
+    explodeHearts();
+    
 });
 
 noBtn.addEventListener("click", (e) => {
@@ -78,13 +82,12 @@ noBtn.addEventListener("mouseover", () => {
     noBtn.style.top = y + "px";
 });
 
-});
-
 function showText(message) {
     loveText.textContent = message;
     loveText.classList.remove("show-love");
     void loveText.offsetWidth;
     loveText.classList.add("show-love");
 }
+
 
 
