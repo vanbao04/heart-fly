@@ -120,7 +120,10 @@ body {
 }
 
 #noBtn {
-    position: relative;
-    transition: 0.15s;
+    background: #ccc;
+    position: fixed;
+    z-index: 100000;
 }
+
+
 
