@@ -1,4 +1,4 @@
-/* RESET CƠ BẢN */
+/* RESET */
 * {
     margin: 0;
     padding: 0;
@@ -14,8 +14,8 @@ body {
 
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
+    align-items: center;
 
     overflow: hidden;
 }
@@ -31,7 +31,7 @@ body {
 /* HỘP 2 LỰA CHỌN */
 #answer-box {
     display: flex;
-    gap: 60px;
+    gap: 80px; /* TÁCH RÕ */
 }
 
 /* NÚT CHUNG */
@@ -63,24 +63,9 @@ body {
     transform: scale(1.1);
 }
 
-/* NÚT KHÔNG */
+/* NÚT KHÔNG – BAN ĐẦU KHÔNG FIXED */
 #noBtn {
     background: #e0e0e0;
     color: black;
-    position: fixed; /* CHỈ NÚT NÀY FIXED */
-}
-
-/* MÀN HÌNH SAU KHI BẤM CÓ */
-.love {
-    text-align: center;
-}
-
-.love h1 {
-    font-size: 48px;
-    color: #ff2e63;
-}
-
-.love p {
-    font-size: 28px;
-    margin-top: 20px;
+    position: relative; /* QUAN TRỌNG */
 }
