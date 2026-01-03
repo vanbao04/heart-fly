@@ -97,8 +97,32 @@ body {
 /* Trái tim */
 .heart {
     position: fixed;
-    bottom: -20px;
-    animation: fly 3s linear forwards;
+    bottom: -50px;
+    animation-name: floatUp, spin;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+heart.style.animationDuration = Math.random() * 2 + 3 + "s";
+
+@keyframes floatUp {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-120vh);
+        opacity: 0;
+    }
+}
+
+@keyframes spin {
+    from {
+        rotate: 0deg;
+    }
+    to {
+        rotate: 360deg;
+    }
 }
 
 @keyframes fly {
@@ -129,3 +153,4 @@ body {
         opacity: 0;
     }
 }
+
