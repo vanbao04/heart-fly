@@ -30,3 +30,14 @@ function createHeart() {
 
 // TẠO TRÁI TIM LIÊN TỤC
 setInterval(createHeart, 250);
+const loveText = document.getElementById("love-text");
+
+document.addEventListener("click", () => {
+    loveText.classList.remove("show-love");
+
+    // trigger lại animation
+    void loveText.offsetWidth;
+
+    loveText.classList.add("show-love");
+});
+
