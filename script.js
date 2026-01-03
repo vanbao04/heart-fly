@@ -1,3 +1,5 @@
+console.log("SCRIPT LOADED");
+
 // ===== LẤY ELEMENT =====
 const inputBox = document.getElementById("input-box");
 const nameInput = document.getElementById("nameInput");
@@ -7,6 +9,13 @@ const question = document.getElementById("question");
 const answerBox = document.getElementById("answer-box");
 const yesBtn = document.getElementById("yesBtn");
 const noBtn = document.getElementById("noBtn");
+console.log({
+    nameInput,
+    inputBox,
+    question,
+    answerBox,
+    form
+});
 
 // ===== CHỮ NÚT KHÔNG =====
 const noMessages = [
@@ -139,6 +148,7 @@ function explodeHearts(name) {
         setTimeout(() => heart.remove(), 2000);
     }
 }
+
 
 
 
