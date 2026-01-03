@@ -46,6 +46,7 @@ startBtn.addEventListener("click", () => {
             createHeart();
         }
     }, 200);
+
 });
 
 // ===== NÚT KHÔNG =====
@@ -84,6 +85,7 @@ function createHeart() {
     heart.style.left = Math.random() * 100 + "vw";
     heart.style.animationDuration = Math.random() * 2 + 3 + "s";
     heart.style.color = `hsl(${Math.random() * 360}, 100%, 60%)`;
+    heart.style.transform = `rotate(${Math.random() * 360}deg)`;
 
     document.body.appendChild(heart);
 
@@ -114,3 +116,4 @@ function explodeHearts(name) {
         setTimeout(() => heart.remove(), 2000);
     }
 }
+
