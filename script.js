@@ -28,19 +28,31 @@ question.classList.add("hidden");
 answerBox.classList.add("hidden");
 
 // ===== BẮT ĐẦU =====
-startBtn.addEventListener("click", () => {
-    if (nameInput.value.trim() === "") return;
+const form = document.getElementById("nameForm");
+
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
 
     const userName = nameInput.value.trim();
+    if (!userName) return;
 
+    // Ẩn ô nhập
     inputBox.classList.add("hidden");
 
+    // Hiện câu hỏi
     question.textContent = `${userName} có yêu anh không? 💖`;
     question.classList.remove("hidden");
 
+    // 👉 LÚC NÀY MỚI HIỆN 2 NÚT
     answerBox.classList.remove("hidden");
 
-    // Trái tim bay nhiều
+    // Trái tim bay nhiều hơn
+    setInterval(() => {
+        for (let i = 0; i < 3; i++) createHeart();
+    }, 200);
+});
+
+// Trái tim bay nhiều
     setInterval(() => {
         for (let i = 0; i < 3; i++) {
             createHeart();
@@ -131,5 +143,6 @@ function explodeHearts(name) {
         setTimeout(() => heart.remove(), 2000);
     }
 }
+
 
 
