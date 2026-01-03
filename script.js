@@ -72,16 +72,6 @@ yesBtn.addEventListener("click", (e) => {
 noBtn.addEventListener("mouseenter", moveNoButton);
 noBtn.addEventListener("touchstart", moveNoButton);
 
-function moveNoButton() {
-    const padding = 80;
-
-    const x = Math.random() * (window.innerWidth - padding);
-    const y = Math.random() * (window.innerHeight - padding);
-
-    noBtn.style.left = x + "px";
-    noBtn.style.top = y + "px";
-}
-
 function showText(message) {
     loveText.textContent = message;
     loveText.classList.remove("show-love");
@@ -130,4 +120,5 @@ function moveNoButton() {
     noBtn.style.left = x + "px";
     noBtn.style.top = y + "px";
 }
+
 
