@@ -33,8 +33,8 @@ const form = document.getElementById("nameForm");
 form.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    const userName = nameInput.value.trim();
-    if (!userName) return;
+const userName = nameInput.value.trim();
+if (!userName) return;
 
     // Ẩn ô nhập
     inputBox.classList.add("hidden");
@@ -143,6 +143,7 @@ function explodeHearts(name) {
         setTimeout(() => heart.remove(), 2000);
     }
 }
+
 
 
 
