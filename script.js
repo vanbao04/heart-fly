@@ -9,11 +9,15 @@ const question = document.getElementById("question");
 const answerBox = document.getElementById("answer-box");
 const yesBtn = document.getElementById("yesBtn");
 const noBtn = document.getElementById("noBtn");
+const form = document.getElementById("nameForm");
+
 console.log({
-    nameInput,
     inputBox,
+    nameInput,
     question,
     answerBox,
+    yesBtn,
+    noBtn,
     form
 });
 
@@ -36,37 +40,22 @@ let lastNoIndex = -1;
 question.classList.add("hidden");
 answerBox.classList.add("hidden");
 
-// ===== BẮT ĐẦU =====
-const form = document.getElementById("nameForm");
-
+// ===== SUBMIT (ENTER HOẠT ĐỘNG) =====
 form.addEventListener("submit", (e) => {
     e.preventDefault();
-
-const form = document.getElementById("nameForm");
-
-form.addEventListener("submit", (e) => {
-    e.preventDefault(); // không reload trang
 
     const userName = nameInput.value.trim();
     if (!userName) return;
 
-    // Ẩn ô nhập
     inputBox.classList.add("hidden");
 
-    // Hiện câu hỏi
     question.textContent = `${userName} có yêu anh không? 💖`;
     question.classList.remove("hidden");
 
-    // 👉 LÚC NÀY MỚI HIỆN CÓ / KHÔNG
     answerBox.classList.remove("hidden");
-
-    // Trái tim bay nhiều hơn
-    setInterval(() => {
-        for (let i = 0; i < 3; i++) createHeart();
-    }, 200);
 });
 
-// ===== NÚT KHÔNG =====
+// ===== NÚT KHÔNG CHẠY TRỐN =====
 noBtn.addEventListener("mouseenter", () => {
     noBtn.style.position = "fixed";
 
@@ -95,33 +84,24 @@ yesBtn.addEventListener("click", () => {
 function createHeart() {
     const heart = document.createElement("div");
     heart.classList.add("heart");
-
-    // inner text heart
     heart.innerHTML = "❤️";
 
-    // random màu
     const colors = ["#ff0000","#ff3366","#ff66cc","#ff99cc","#ff6699","#ff33cc"];
     heart.style.color = colors[Math.floor(Math.random() * colors.length)];
 
-    // random kích thước
     const size = Math.random() * 30 + 20;
     heart.style.fontSize = size + "px";
 
-    // random vị trí ngang
     heart.style.left = Math.random() * window.innerWidth + "px";
+    heart.style.transform = `rotate(${Math.random() * 360}deg)`;
 
-    // random duration mượt
     const duration = Math.random() * 2 + 4;
     heart.style.animationDuration = duration + "s";
 
     document.body.appendChild(heart);
-
-    setTimeout(() => {
-        heart.remove();
-    }, duration * 1000);
+    setTimeout(() => heart.remove(), duration * 1000);
 }
 
-// tạo nhiều trái tim liên tục
 setInterval(createHeart, 300);
 
 // ===== NỔ TRÁI TIM =====
@@ -148,9 +128,3 @@ function explodeHearts(name) {
         setTimeout(() => heart.remove(), 2000);
     }
 }
-
-
-
-
-
-
