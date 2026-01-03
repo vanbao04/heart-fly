@@ -1,7 +1,36 @@
-const noBtn = document.getElementById("noBtn");
-const yesBtn = document.getElementById("yesBtn");
+const inputBox = document.getElementById("input-box");
+const nameInput = document.getElementById("nameInput");
+const startBtn = document.getElementById("startBtn");
 
-// Nút KHÔNG chạy trốn khi hover
+const question = document.getElementById("question");
+const answerBox = document.getElementById("answer-box");
+
+const yesBtn = document.getElementById("yesBtn");
+const noBtn = document.getElementById("noBtn");
+
+let userName = "";
+
+const noTexts = [
+    "Không 😅",
+    "Em từ chối 🙈",
+    "Không nha 😜",
+    "Đừng mơ 😏",
+    "Chưa chắc 😶"
+];
+
+startBtn.addEventListener("click", () => {
+    if (nameInput.value.trim() === "") return;
+
+    userName = nameInput.value.trim();
+
+    inputBox.classList.add("hidden");
+
+    question.textContent = `${userName} có yêu anh không? 💕`;
+    question.classList.remove("hidden");
+
+    answerBox.classList.remove("hidden");
+});
+
 noBtn.addEventListener("mouseenter", () => {
     noBtn.style.position = "fixed";
 
@@ -10,27 +39,28 @@ noBtn.addEventListener("mouseenter", () => {
 
     noBtn.style.left = x + "px";
     noBtn.style.top = y + "px";
+
+    const randomText = noTexts[Math.floor(Math.random() * noTexts.length)];
+    noBtn.textContent = randomText;
 });
 
-// Khi bấm CÓ
 yesBtn.addEventListener("click", () => {
-    document.body.innerHTML = `
-        <div style="
-            display:flex;
-            flex-direction:column;
-            justify-content:center;
-            align-items:center;
-            height:100vh;
-            background:linear-gradient(135deg,#ffdde1,#ee9ca7);
-            font-family:Arial;
-            text-align:center;
-        ">
-            <h1 style="font-size:48px;color:#ff2e63;">
-                Anh biết mà 😍
-            </h1>
-            <p style="font-size:28px;margin-top:20px;">
-                Anh yêu em rất nhiều 💖
-            </p>
-        </div>
-    `;
+    answerBox.classList.add("hidden");
+    question.textContent = `Anh yêu ${userName} nhiều lắm 💖`;
+
+    for (let i = 0; i < 35; i++) {
+        createHeart();
+    }
 });
+
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.textContent = "❤️";
+
+    heart.style.left = Math.random() * window.innerWidth + "px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 3000);
+}
