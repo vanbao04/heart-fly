@@ -144,6 +144,6 @@ body {
     z-index: 100000;
 }
 
-
-
-
+.heart {
+    pointer-events: none;
+}
