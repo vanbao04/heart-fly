@@ -44,7 +44,16 @@ startBtn.addEventListener("click", () => {
     answerBox.classList.remove("hidden");
 
     // Bắt đầu trái tim bay
-    setInterval(createHeart, 300);
+    setInterval(() => {
+    const count = Math.floor(Math.random() * 4) + 2; // 2–5 trái tim
+    for (let i = 0; i < count; i++) {
+        createHeart(
+            const size = Math.random() * 30 + 20;
+
+        );
+    }
+}, 180);
+
 });
 
 // ===== NÚT KHÔNG CHẠY TRỐN + ĐỔI CHỮ =====
@@ -121,3 +130,4 @@ function explodeHearts(name) {
         }, 2000);
     }
 }
+
