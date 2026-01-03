@@ -119,3 +119,15 @@ function explodeHearts() {
     }
 }
 
+let speed = 1;
+
+function moveNoButton() {
+    speed += 0.3;
+    const x = Math.random() * (window.innerWidth - 100);
+    const y = Math.random() * (window.innerHeight - 100);
+
+    noBtn.style.transition = `${0.2 / speed}s`;
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+}
+
