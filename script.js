@@ -69,18 +69,18 @@ yesBtn.addEventListener("click", (e) => {
     
 });
 
-noBtn.addEventListener("click", (e) => {
-    e.stopPropagation();
-    answerBox.style.display = "none";
-    showText(`Không sao đâu 😊 Anh vẫn thích ${name} 💖`);
-noBtn.addEventListener("mouseover", () => {
-    const x = Math.random() * (window.innerWidth - 100);
-    const y = Math.random() * (window.innerHeight - 100);
+noBtn.addEventListener("mouseenter", moveNoButton);
+noBtn.addEventListener("touchstart", moveNoButton);
 
-    noBtn.style.position = "fixed";
+function moveNoButton() {
+    const padding = 80;
+
+    const x = Math.random() * (window.innerWidth - padding);
+    const y = Math.random() * (window.innerHeight - padding);
+
     noBtn.style.left = x + "px";
     noBtn.style.top = y + "px";
-});
+}
 
 function showText(message) {
     loveText.textContent = message;
@@ -118,3 +118,4 @@ function explodeHearts() {
         setTimeout(() => heart.remove(), 1200);
     }
 }
+
